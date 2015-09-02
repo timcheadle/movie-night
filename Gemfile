@@ -40,3 +40,15 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 end
 
+group :development do
+  # guard for automatically running tests on changes
+  gem 'guard', require: false
+  gem 'guard-bundler', require: false
+  gem 'guard-minitest', require: false
+  gem 'rb-fsevent', require: false
+end
+
+group :test do
+  gem 'minitest-reporters'
+  gem 'shoulda'
+end
