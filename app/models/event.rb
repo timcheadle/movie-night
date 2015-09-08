@@ -1,6 +1,12 @@
 class Event < ActiveRecord::Base
-  validates :location, presence: true
+  has_many :movies
 
-  validates :occurs_at, presence: true,
-                        uniqueness: { scope: :location, message: 'already scheduled for that location' }
+  validates :occurs_at, presence: true
+
+  validates :location, presence: true,
+                       uniqueness: {
+                         scope: :occurs_at,
+                         case_sensitive: false,
+                         message: 'event already scheduled for that time'
+                       }
 end

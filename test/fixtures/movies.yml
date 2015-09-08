@@ -1,11 +1,14 @@
 alien:
   title: "Alien"
-  url: http://www.imdb.com/title/tt0078748/
+  url: "http://www.imdb.com/title/tt0078748/"
+  event: january
 
 lebowski:
   title: "The Big Lebowski"
-  url: http://www.imdb.com/title/tt0118715/
+  url: "http://www.imdb.com/title/tt0118715/"
+  event: january
 
 tron:
   title: "Tron: Legacy"
-  url: http://www.imdb.com/title/tt0084827/
+  url: "http://www.imdb.com/title/tt0084827/"
+  event: january

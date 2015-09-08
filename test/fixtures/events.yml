@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  occurs_at: 2015-09-01 20:00:00
+january:
+  occurs_at: 2015-01-01 20:00:00
   location: "Tim's House"
 
-two:
-  occurs_at: 2015-10-01 21:00:00
+february:
+  occurs_at: 2015-02-01 21:00:00
   location: "Industry"
