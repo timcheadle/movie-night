@@ -6,6 +6,8 @@ class EventTest < ActiveSupport::TestCase
     assert @event.valid?
   end
 
+  should have_many(:movies)
+
   should validate_presence_of(:occurs_at)
   should validate_presence_of(:location)
 

@@ -9,9 +9,10 @@ class MovieTest < ActiveSupport::TestCase
     assert @movie.valid?
   end
 
+  should belong_to(:event)
+
   should validate_presence_of(:title)
   should validate_presence_of(:url)
-  should validate_presence_of(:event)
 
   should validate_uniqueness_of(:title).
     scoped_to(:event_id).
