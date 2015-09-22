@@ -7,6 +7,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   should have_many(:movies)
+  should have_many(:votes)
 
   should validate_presence_of(:occurs_at)
   should validate_presence_of(:location)
