@@ -11,4 +11,8 @@ class Movie < ActiveRecord::Base
                       case_sensitive: false,
                       message: 'already suggested for that event'
                     }
+
+  def vote(person)
+    votes << Vote.create(event: event, person: person)
+  end
 end

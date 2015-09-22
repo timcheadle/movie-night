@@ -19,4 +19,11 @@ class MovieTest < ActiveSupport::TestCase
     scoped_to(:event_id).
     with_message('already suggested for that event').
     case_insensitive
+
+  test 'should allow voting' do
+    @movie.vote('Tim')
+    @movie.vote('Faye')
+
+    assert @movie.votes, 2
+  end
 end
