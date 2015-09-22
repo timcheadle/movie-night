@@ -24,6 +24,6 @@ class MovieTest < ActiveSupport::TestCase
     @movie.vote('Tim')
     @movie.vote('Faye')
 
-    assert @movie.votes, 2
+    assert_equal @movie.votes.count, 2
   end
 end
