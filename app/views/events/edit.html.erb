@@ -1,0 +1,11 @@
+<h1>Edit Event</h1>
+
+<%= form_for(@event) do |f| %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+
+  <%= f.label :occurs_at, 'Date/Time' %>
+  <%= f.text_field :occurs_at %>
+
+  <%= f.submit %>
+<% end %>
