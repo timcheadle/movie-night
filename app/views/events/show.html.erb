@@ -3,6 +3,37 @@
 <p><strong>Location:</strong> <%= @event.location %></p>
 <p><strong>Date/Time:</strong> <%= @event.occurs_at %></p>
 
+<h2>Suggested Movies</h2>
+<% if @event.movies.any? %>
+  <ul>
+    <% @event.movies.select { |m| m.persisted? }.each do |movie| %>
+      <li>
+        <%= movie.title %>
+        (<%= link_to "Delete", event_movie_path(@event, movie), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %>)
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Add a Movie</h2>
+<% if @movie.errors.any? %>
+  <ul class="error-list">
+    <% @movie.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@movie, url: event_movies_path(@event)) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.submit 'Suggest Movie' %>
+<% end %>
+
 <p>
   <%= link_to 'Edit Event', edit_event_path(@event) %> | <%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %>
 </p>

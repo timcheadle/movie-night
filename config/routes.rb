@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events do
+    resources :movies, only: [:create, :destroy]
+  end
 
   root 'events#index'
 
