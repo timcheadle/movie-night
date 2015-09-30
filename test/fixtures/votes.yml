@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person: The Dude
+  event: january
+  movie: alien
+
+two:
+  person: Walter
+  event: january
+  movie: tron

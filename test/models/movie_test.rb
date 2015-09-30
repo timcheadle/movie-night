@@ -10,6 +10,7 @@ class MovieTest < ActiveSupport::TestCase
   end
 
   should belong_to(:event)
+  should have_many(:votes)
 
   should validate_presence_of(:title)
   should validate_presence_of(:url)
@@ -18,4 +19,11 @@ class MovieTest < ActiveSupport::TestCase
     scoped_to(:event_id).
     with_message('already suggested for that event').
     case_insensitive
+
+  test 'should allow voting' do
+    @movie.vote('Tim')
+    @movie.vote('Faye')
+
+    assert_equal @movie.votes.count, 2
+  end
 end
