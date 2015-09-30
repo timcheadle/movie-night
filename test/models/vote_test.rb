@@ -13,4 +13,6 @@ class VoteTest < ActiveSupport::TestCase
   should belong_to(:movie)
 
   should validate_presence_of(:person)
+  should validate_presence_of(:event)
+  should validate_presence_of(:movie)
 end

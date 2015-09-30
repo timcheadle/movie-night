@@ -2,6 +2,10 @@
 
 one:
   person: The Dude
+  event: january
+  movie: alien
 
 two:
   person: Walter
+  event: january
+  movie: tron
