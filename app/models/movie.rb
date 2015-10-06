@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
   belongs_to :event
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   validates :event, presence: true
   validates :url, presence: true

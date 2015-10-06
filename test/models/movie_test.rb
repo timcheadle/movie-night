@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MovieTest < ActiveSupport::TestCase
   def setup
-    @movie = movies(:lebowski)
+    @movie = movies(:alien)
   end
 
   test 'has a valid fixture' do
@@ -24,6 +24,12 @@ class MovieTest < ActiveSupport::TestCase
     @movie.vote('Tim')
     @movie.vote('Faye')
 
-    assert_equal @movie.votes.count, 2
+    assert_equal @movie.votes.count, 4
+  end
+
+  test 'should destroy related votes on delete' do
+    assert_difference 'Vote.count', -2 do
+      @movie.destroy
+    end
   end
 end
