@@ -34,5 +34,16 @@ class EventTest < ActiveSupport::TestCase
 
   test 'event has a winning movie' do
     assert_equal @event.winning_movie, movies(:alien)
+
+    #event = Event.create(location: "foo", occurs_at: Time.now)
+    #martian = event.movies.build(title: "The Martian", url: "martian.com")
+    #porkys  = event.movies.build(title: "Porky's", url: "stayclassyjoe.com")
+
+    #martian.vote("a")
+    #martian.vote("b")
+    #martian.vote("c")
+    #porkys.vote("z")
+
+    #assert_equal event.winning_movie, martian
   end
 end
