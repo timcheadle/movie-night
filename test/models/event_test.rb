@@ -32,6 +32,7 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
-    assert_equal event.winning_movie, alien
+  test 'event has a winning movie' do
+    assert_equal @event.winning_movie, movies(:alien)
   end
 end

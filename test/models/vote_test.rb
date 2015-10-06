@@ -2,7 +2,7 @@ require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
   def setup
-    @vote = votes(:one)
+    @vote = votes(:alien_one)
   end
 
   test 'has a valid fixture' do

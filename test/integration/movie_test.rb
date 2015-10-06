@@ -1,14 +1,15 @@
 require "test_helper"
 
-class EventsTest < ActionDispatch::IntegrationTest
+class MoviesTest < ActionDispatch::IntegrationTest
   test "Event page shows all movies" do
     january = events(:january)
+    alien = movies(:alien)
+    tron  = movies(:tron)
 
     visit event_path(january)
 
-    assert page.has_content?("Alien")
-    assert page.has_content?("Big Lebowski")
-    assert page.has_content?("Tron: Legacy")
+    assert page.has_link?(alien.title, href: alien.url)
+    assert page.has_link?(tron.title, href: tron.url)
   end
 
   test "Event page allows you to suggest a movie" do
