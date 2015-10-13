@@ -18,6 +18,14 @@ class MoviesController < ApplicationController
     redirect_to @event, notice: 'Movie deleted successfully'
   end
 
+  def vote
+    @event = Event.find(params[:event_id])
+    @movie = Movie.find(params[:id])
+
+    Vote.create(event: @event, movie: @movie)
+    redirect_to @event, notice: "Vote added for #{@movie.title}"
+  end
+
   private
 
     def movie_params

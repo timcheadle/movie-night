@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :events do
-    resources :movies, only: [:create, :destroy]
+    resources :movies, only: [:create, :destroy] do
+      get 'vote', on: :member
+    end
   end
 
   root 'events#index'
