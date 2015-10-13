@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  has_many :movies
-  has_many :votes
+  has_many :movies, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   validates :occurs_at, presence: true
 

@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      movie:
+        url:
+          one: "URL"
+          other: "URLs"

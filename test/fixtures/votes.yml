@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+alien_one:
   person: The Dude
   event: january
   movie: alien
 
-two:
+alien_two:
   person: Walter
+  event: january
+  movie: alien
+
+tron_one:
+  person: Donny
   event: january
   movie: tron

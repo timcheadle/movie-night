@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  test 'has a valid fixture' do
+  def setup
     @event = events(:january)
+  end
+
+  test 'has a valid fixture' do
     assert @event.valid?
   end
 
@@ -17,16 +20,30 @@ class EventTest < ActiveSupport::TestCase
     with_message('event already scheduled for that time').
     case_insensitive
 
+  test 'should destroy related movies on delete' do
+    assert_difference 'Movie.count', -3 do
+      @event.destroy
+    end
+  end
+
+  test 'should destroy related votes on delete' do
+    assert_difference 'Vote.count', -3 do
+      @event.destroy
+    end
+  end
+
   test 'event has a winning movie' do
-    alien = movies(:alien)
-    tron = movies(:tron)
+    assert_equal @event.winning_movie, movies(:alien)
 
-    event = alien.event
+    #event = Event.create(location: "foo", occurs_at: Time.now)
+    #martian = event.movies.build(title: "The Martian", url: "martian.com")
+    #porkys  = event.movies.build(title: "Porky's", url: "stayclassyjoe.com")
 
-    alien.vote('Alice')
-    alien.vote('Bob')
-    tron.vote('Cathy')
+    #martian.vote("a")
+    #martian.vote("b")
+    #martian.vote("c")
+    #porkys.vote("z")
 
-    assert_equal event.winning_movie, alien
+    #assert_equal event.winning_movie, martian
   end
 end
