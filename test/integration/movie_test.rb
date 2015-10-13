@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
 class MoviesTest < ActionDispatch::IntegrationTest
-  test "Event page shows all movies" do
+  test 'Event page shows all movies' do
     january = events(:january)
     alien = movies(:alien)
     tron  = movies(:tron)
@@ -23,10 +23,10 @@ class MoviesTest < ActionDispatch::IntegrationTest
       click_button "Suggest Movie"
     end
 
-    assert page.has_content?("Star Wars")
+    assert page.has_link?("Star Wars", href: "http://example.com")
   end
 
-  test "Event page does not let you create an invalid movie" do
+  test "Event page doesn't allow you suggest an invalid movie" do
     january = events(:january)
 
     visit event_path(january)
@@ -39,13 +39,14 @@ class MoviesTest < ActionDispatch::IntegrationTest
     assert page.has_content?("URL can't be blank")
   end
 
-  test "Event page allows you to delete a movie" do
+  test "Event page allows you delete a movie" do
     january = events(:january)
+    alien = movies(:alien)
 
     visit event_path(january)
 
-    find("li", text: "Alien").click_link("Delete")
+    find("li", text: alien.title).click_link("Delete")
 
-    refute page.has_content?("Alien")
+    refute page.has_link?(alien.title)
   end
 end
