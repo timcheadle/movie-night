@@ -9,7 +9,8 @@
     <% @event.movies.select { |m| m.persisted? }.each do |movie| %>
       <li>
         <%= link_to movie.title, movie.url %>
-        (<%= link_to "Delete", event_movie_path(@event, movie), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %>)
+        -- Votes: <%= movie.votes.count %>
+        <%= link_to "Vote", vote_event_movie_path(@event, movie) %> | <%= link_to "Delete", event_movie_path(@event, movie), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %>)
       </li>
     <% end %>
   </ul>

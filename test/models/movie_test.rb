@@ -21,8 +21,8 @@ class MovieTest < ActiveSupport::TestCase
     case_insensitive
 
   test 'should allow voting' do
-    @movie.vote('Tim')
-    @movie.vote('Faye')
+    @movie.vote
+    @movie.vote
 
     assert_equal @movie.votes.count, 4
   end
