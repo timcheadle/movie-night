@@ -1,9 +1,17 @@
-<%= form_for(@event) do |f| %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(@event) do |f| %>
+      <div class="form-group">
+        <%= f.label :location %>
+        <%= f.text_field :location, class: 'form-control' %>
+      </div>
 
-  <%= f.label :occurs_at, 'Date/Time' %>
-  <%= f.text_field :occurs_at %>
+      <div class="form-group">
+        <%= f.label :occurs_at, 'Date/Time' %>
+        <%= f.text_field :occurs_at, class: 'form-control' %>
+      </div>
 
-  <%= f.submit %>
-<% end %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

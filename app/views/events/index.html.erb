@@ -2,9 +2,7 @@
   Events
 <% end %>
 
-<a href="<%= new_event_path %>">Create Event</a>
-
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Location</th>
@@ -15,8 +13,10 @@
     <% @events.each do |event| %>
       <tr>
         <th><%= link_to event.location, event %></th>
-        <th><%= event.occurs_at %></th>
+        <th><%= event.occurs_at.to_formatted_s(:long_ordinal) %></th>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<a href="<%= new_event_path %>" class="btn btn-primary">Create Event</a>
