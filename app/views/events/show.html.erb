@@ -1,19 +1,31 @@
-<h1>Event</h1>
+<% content_for :page_title do %>
+  <%= @event.location %>
+  <small>
+     <%= distance_of_time_in_words_to_now(@event.occurs_at) %>
+  </small>
+  <div class="pull-right title-nav">
+    <%= link_to 'Back to Events', events_path %>
+  </div>
+<% end %>
 
-<p><strong>Location:</strong> <%= @event.location %></p>
-<p><strong>Date/Time:</strong> <%= @event.occurs_at %></p>
-
-<h2>Suggested Movies</h2>
 <% if @event.movies.any? %>
-  <ul>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Votes</th>
+        <th colspan="2"></td>
+      </tr>
+    </thead>
     <% @event.movies.select { |m| m.persisted? }.each do |movie| %>
-      <li>
-        <%= link_to movie.title, movie.url %>
-        -- Votes: <%= movie.votes.count %>
-        <%= link_to "Vote", vote_event_movie_path(@event, movie) %> | <%= link_to "Delete", event_movie_path(@event, movie), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %>)
-      </li>
+      <tr>
+        <td><%= link_to movie.title, movie.url %></td>
+        <td><%= movie.votes.count %></td>
+        <td><%= link_to "Vote", vote_event_movie_path(@event, movie) %></td>
+        <td><%= link_to "Delete", event_movie_path(@event, movie), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %></td>
+      </tr>
     <% end %>
-  </ul>
+  </table>
 <% end %>
 
 <h2>Add a Movie</h2>
@@ -26,17 +38,20 @@
 <% end %>
 
 <%= form_for(@movie, url: event_movies_path(@event)) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
 
-  <%= f.label :url %>
-  <%= f.text_field :url %>
+  <div class="form-group">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
 
-  <%= f.submit 'Suggest Movie' %>
+  <%= f.submit 'Suggest Movie', class: 'btn btn-primary' %>
 <% end %>
 
 <p>
   <%= link_to 'Edit Event', edit_event_path(@event) %> | <%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %>
 </p>
 
-<%= link_to 'Back to all Events', events_path %>
