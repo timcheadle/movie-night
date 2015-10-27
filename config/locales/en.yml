@@ -21,6 +21,12 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      default: "%B %e, %Y"
+  time:
+    formats:
+      default: "%B %e, %Y"
   activerecord:
     attributes:
       movie:

@@ -2,7 +2,7 @@
   <%= @event.location %>
 
   <small>
-   <%= @event.occurs_at.to_formatted_s(:long_ordinal) %> (<%= distance_of_time_in_words_to_now(@event.occurs_at) %>)
+   <%= @event.occurs_at %> (<%= distance_of_time_in_words_to_now(@event.occurs_at) %>)
   </small>
 
   <div class="pull-right title-nav">

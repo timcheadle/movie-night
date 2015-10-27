@@ -13,7 +13,7 @@
     <% @events.each do |event| %>
       <tr>
         <th><%= link_to event.location, event %></th>
-        <th><%= event.occurs_at.to_formatted_s(:long_ordinal) %></th>
+        <th><%= event.occurs_at %></th>
       </tr>
     <% end %>
   </tbody>
