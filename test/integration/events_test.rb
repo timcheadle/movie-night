@@ -2,10 +2,17 @@ require 'test_helper'
 
 class EventsTest < ActionDispatch::IntegrationTest
   def setup
+    @user = users(:alice)
+    sign_in(@user)
+
     @january = events(:january)
     @february = events(:february)
 
     visit events_path
+  end
+
+  def teardown
+    Warden.test_reset!
   end
 
   test 'Index page shows all events' do
@@ -45,7 +52,7 @@ class EventsTest < ActionDispatch::IntegrationTest
     event_time = 20.days.from_now
 
     click_link @january.location
-    click_link 'Edit Event'
+    find('.page-header').click_link 'Edit'
 
     fill_in 'Location', with: 'New Place'
     fill_in 'Date/Time', with: event_time
@@ -58,11 +65,10 @@ class EventsTest < ActionDispatch::IntegrationTest
 
   test 'Can delete events' do
     click_link @january.location
-    click_link 'Delete Event'
+    find('.page-header').click_link 'Delete'
 
     assert_equal events_path, current_path
 
     refute page.has_content?(@january.location)
-    refute page.has_content?(@january.occurs_at)
   end
 end
