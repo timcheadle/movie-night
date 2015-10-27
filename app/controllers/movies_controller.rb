@@ -21,6 +21,7 @@ class MoviesController < ApplicationController
   end
 
   def vote
+    @event = Event.find(params[:event_id])
     @movie = Movie.find(params[:id])
 
     @movie.vote
