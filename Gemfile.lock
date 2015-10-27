@@ -118,6 +118,8 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.8.0)
+    minitest-focus (1.1.2)
+      minitest (>= 4, < 6)
     minitest-reporters (1.0.20)
       ansi
       builder
@@ -230,6 +232,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  minitest-focus
   minitest-reporters
   pg
   rails (= 4.2.3)
