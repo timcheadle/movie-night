@@ -25,46 +25,22 @@
       </tr>
     </thead>
     <% @event.movies.select { |m| m.persisted? }.each do |movie| %>
-      <tr>
+      <tr data-movie-id="<%= movie.id %>">
         <td><%= link_to movie.title, movie.url %></td>
-        <td><%= movie.votes.count %></td>
-        <td><%= link_to "Vote", vote_event_movie_path(@event, movie) %></td>
+        <td class="vote-count"><%= movie.votes.count %></td>
+        <td><%= link_to "Vote", vote_event_movie_path(@event, movie), remote: true %></td>
         <td><%= link_to "Delete", event_movie_path(@event, movie), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %></td>
       </tr>
     <% end %>
   </table>
 <% end %>
 
-<% if @event.votes.count > 0 %>
-  <hr>
-
-  <h3>Vote History</h3>
-
-  <div class="row">
-    <div class="col-md-6">
-      <table class="table vote-list">
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Movie</th>
-            <th>Vote Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @event.votes.sort { |a, b| b.created_at <=> a.created_at }.each do |vote| %>
-            <tr>
-              <td><%= vote.user.name %></td>
-              <td><%= vote.movie.title %></td>
-              <td><%= vote.created_at %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-<% end %>
-
 <hr>
+
+<div class="vote-history">
+  <%= render 'vote_history' %>
+</div>
+
 
 <div class="row">
   <div class="col-md-6">

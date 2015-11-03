@@ -1,0 +1,3 @@
+$('.movie-list tr[data-movie-id="<%= @movie.id %>"] .vote-count').html("<%= @movie.votes.count %>");
+
+$('.vote-history').html("<%= escape_javascript( render partial: 'events/vote_history' ) %>");

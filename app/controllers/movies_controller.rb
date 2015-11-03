@@ -25,7 +25,11 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
 
     @movie.vote(current_user)
-    redirect_to @event, notice: "Voted for #{@movie.title}"
+
+    respond_to do |format|
+      format.html { redirect_to @event, notice: "Voted for #{@movie.title}" }
+      format.js
+    end
   end
 
   private
