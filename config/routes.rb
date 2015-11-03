@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'events#index'
+  authenticated :user do
+   root to: "events#index", as: "user_root"
+  end
+
+  root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

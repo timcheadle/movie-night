@@ -16,7 +16,7 @@
 <% end %>
 
 <% if @event.movies.any? %>
-  <table class="table table-striped">
+  <table class="table table-striped movie-list">
     <thead>
       <tr>
         <th>Title</th>
@@ -33,6 +33,35 @@
       </tr>
     <% end %>
   </table>
+<% end %>
+
+<% if @event.votes.count > 0 %>
+  <hr>
+
+  <h3>Vote History</h3>
+
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table vote-list">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Movie</th>
+            <th>Vote Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @event.votes.sort { |a, b| b.created_at <=> a.created_at }.each do |vote| %>
+            <tr>
+              <td><%= vote.user.name %></td>
+              <td><%= vote.movie.title %></td>
+              <td><%= vote.created_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
 
 <hr>

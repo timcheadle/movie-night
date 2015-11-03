@@ -12,7 +12,7 @@ class Movie < ActiveRecord::Base
                       message: 'already suggested for that event'
                     }
 
-  def vote
-    Vote.create(movie: self, event: event)
+  def vote(user)
+    Vote.create(movie: self, event: event, user: user)
   end
 end

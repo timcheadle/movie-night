@@ -3,11 +3,14 @@
 alien_one:
   event: january
   movie: alien
+  user: alice
 
 alien_two:
   event: january
   movie: alien
+  user: bob
 
 tron_one:
   event: january
   movie: tron
+  user: alice

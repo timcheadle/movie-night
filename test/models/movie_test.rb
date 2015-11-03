@@ -21,10 +21,12 @@ class MovieTest < ActiveSupport::TestCase
     case_insensitive
 
   test 'should allow voting' do
-    @movie.vote
-    @movie.vote
+    user = users(:alice)
 
-    assert_equal @movie.votes.count, 4
+    vote = @movie.vote(user)
+
+    assert_equal @movie.votes.count, 3
+    assert_equal user, vote.user
   end
 
   test 'should destroy related votes on delete' do

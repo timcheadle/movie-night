@@ -43,7 +43,7 @@ class MoviesTest < ActionDispatch::IntegrationTest
   test "Event page allows you delete a movie" do
     alien = movies(:alien)
 
-    find("tr", text: alien.title).click_link("Delete")
+    find(".movie-list tr", text: alien.title).click_link("Delete")
 
     refute page.has_link?(alien.title)
   end
