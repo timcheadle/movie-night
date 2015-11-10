@@ -15,7 +15,7 @@
         </thead>
         <tbody>
           <% @event.votes.sort { |a, b| b.created_at <=> a.created_at }.each do |vote| %>
-            <%= render partial: 'vote_history_row', locals: { vote: vote } %>
+            <%= render partial: 'events/vote_history_row', locals: { vote: vote } %>
           <% end %>
         </tbody>
       </table>

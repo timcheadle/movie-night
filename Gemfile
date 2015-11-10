@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -59,4 +60,7 @@ group :test do
   gem 'launchy'
   gem 'minitest-focus'
   gem 'shoulda'
+
+  # Minitest formatter for CircleCI
+  gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
 end
