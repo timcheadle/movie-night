@@ -10,6 +10,6 @@
 // Views
 @import "views/events";
 
-body {
-  background: asset_url('star.svg');
+.navbar-brand img {
+  max-height: 25px;
 }
