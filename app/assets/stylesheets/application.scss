@@ -9,3 +9,7 @@
 
 // Views
 @import "views/events";
+
+body {
+  background: asset_url('star.svg');
+}

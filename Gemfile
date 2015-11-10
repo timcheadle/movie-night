@@ -60,4 +60,7 @@ group :test do
   gem 'minitest-focus'
   gem 'minitest-reporters'
   gem 'shoulda'
+
+  # Minitest formatter for CircleCI
+  gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
 end
