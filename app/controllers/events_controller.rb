@@ -2,7 +2,18 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = Event.all
+    @query = params[:search]
+
+    if @query.present?
+      @events = Event.where('location ILIKE ?', "%#{@query}%")
+
+      # Also search by movie title
+      movies = Movie.where('title ILIKE ?', "%#{@query}%")
+      @events += movies.map(&:event)
+      @events.uniq!
+    else
+      @events = Event.all
+    end
   end
 
   def show
@@ -48,6 +59,6 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:location, :occurs_at)
+      params.require(:event).permit(:location, :occurs_at, :search)
     end
 end

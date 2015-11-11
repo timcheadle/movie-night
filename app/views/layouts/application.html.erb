@@ -59,6 +59,12 @@
     </nav>
 
     <div class="container">
+      <%= form_tag events_path, method: :get do %>
+        <%= label_tag :search %>
+        <%= text_field_tag :search, @query %>
+        <%= submit_tag 'Search Events' %>
+      <% end %>
+
       <% if content_for? :page_title %>
         <div class="page-header">
           <% if content_for? :nav %>
