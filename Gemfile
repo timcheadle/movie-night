@@ -41,6 +41,9 @@ gem 'devise'
 # MovieDB API
 gem 'themoviedb'
 
+# Env var management
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -55,6 +58,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-minitest', require: false
   gem 'rb-fsevent', require: false
+  gem 'pry-rails'
 end
 
 group :test do

@@ -19,7 +19,7 @@
   <table class="table table-striped movie-list">
     <thead>
       <tr>
-        <th>Title</th>
+        <th colspan="2">Title</th>
         <th>Votes</th>
         <th colspan="2"></td>
       </tr>
@@ -27,6 +27,7 @@
     <% @event.movies.select { |m| m.persisted? }.each do |movie| %>
       <tr>
         <td><%= link_to movie.title, movie.url %></td>
+        <td><%= image_tag movie.get_poster_url(154) %></td>
         <td><%= movie.votes.count %></td>
         <td><%= link_to "Vote", vote_event_movie_path(@event, movie) %></td>
         <td><%= link_to "Delete", event_movie_path(@event, movie), method: :delete, data: { confirm: "Are you sure you want to delete #{movie.title}?" } %></td>
