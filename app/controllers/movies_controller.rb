@@ -27,9 +27,7 @@ class MoviesController < ApplicationController
     @vote = @movie.vote(current_user)
 
     respond_to do |format|
-      format.html do
-        redirect_to @event, notice: "Voted for #{@movie.title}"
-      end
+      format.html { redirect_to @event, notice: "Voted for #{@movie.title}" }
       format.js
     end
   end
