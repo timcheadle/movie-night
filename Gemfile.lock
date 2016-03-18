@@ -206,7 +206,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    themoviedb (0.1.0)
+    themoviedb (1.0.1)
       httparty
     thor (0.19.1)
     thread_safe (0.3.5)
