@@ -1,0 +1,24 @@
+<% if @event.votes.count > 0 %>
+  <hr>
+
+  <h3>Vote History</h3>
+
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table vote-list">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Movie</th>
+            <th>Vote Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @event.votes.sort { |a, b| b.created_at <=> a.created_at }.each do |vote| %>
+            <%= render partial: 'events/vote_history_row', locals: { vote: vote } %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

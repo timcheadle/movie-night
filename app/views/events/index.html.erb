@@ -2,21 +2,25 @@
   Events
 <% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Date/Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
+<% if @events.any? %>
+  <table class="table">
+    <thead>
       <tr>
-        <th><%= link_to event.location, event %></th>
-        <th><%= event.occurs_at %></th>
+        <th>Location</th>
+        <th>Date/Time</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <th><%= link_to event.location, event %></th>
+          <th><%= event.occurs_at %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Sorry, no events found.</p>
+<% end %>
 
 <a href="<%= new_event_path %>" class="btn btn-primary">Create Event</a>

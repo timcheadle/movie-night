@@ -45,6 +45,9 @@ gem 'themoviedb'
 # Env var management
 gem 'figaro'
 
+# Heroku
+gem 'rails_12factor'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -66,6 +69,8 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'minitest-focus'
-  gem 'minitest-reporters'
   gem 'shoulda'
+
+  # Minitest formatter for CircleCI
+  gem 'minitest-ci', :git => 'git@github.com:circleci/minitest-ci.git'
 end
