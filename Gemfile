@@ -39,6 +39,12 @@ gem 'bootstrap-sass'
 # Devise
 gem 'devise'
 
+# MovieDB API
+gem 'themoviedb'
+
+# Env var management
+gem 'figaro'
+
 # Heroku
 gem 'rails_12factor'
 
@@ -56,6 +62,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-minitest', require: false
   gem 'rb-fsevent', require: false
+  gem 'pry-rails'
 end
 
 group :test do
